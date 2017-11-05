@@ -30,6 +30,21 @@ void Out(container &c, ofstream &ofst) {
 	for (int i = 0; i < c.len; i++) {
 		ofst << i + 1 << ": ";
 		Out((c.cont[i]), ofst);
+		ofst << "Length of name = " << LengthOfName(c.cont[i]) << "." << endl;
+	}
+}
+
+//-----------------------------------------------------
+// Сортировка содержимого контейнера
+void Sort(container &c) {
+	for (int i = 0; i < c.len - 1; i++) {
+		for (int j = i + 1; j < c.len; j++) {
+			if (Compare(c.cont[i], c.cont[j])) {
+				animal *tmp = c.cont[i];
+				c.cont[i] = c.cont[j];
+				c.cont[j] = tmp;
+			}
+		}
 	}
 }
 
@@ -96,7 +111,6 @@ void OutBird(bird* &b, ofstream &ofst) {
 		break;
 	}
 	ofst << "migratory." << endl;
-
 }
 
 void InBeast(beast* &b, ifstream &ifst)
@@ -185,4 +199,36 @@ void Out(animal *a, ofstream &ofst) {
 	default:
 		ofst << "Incorrect animal!" << endl;
 	}
+}
+
+int LengthOfNameFish(fish *f) {
+	return strlen(f->name);
+}
+
+int LengthOfNameBird(bird *b) {
+	return strlen(b->name);
+}
+
+int LengthOfNameBeast(beast *b) {
+	return strlen(b->name);
+}
+
+int LengthOfName(animal *a) {
+	fish *f;
+	bird *b;
+	switch (a->k) {
+	case FISH:
+		f = (fish*)a;
+		return LengthOfNameFish(f);
+	case BIRD:
+		b = (bird*)a;
+		return LengthOfNameBird(b);
+	case BEAST:
+		b = (beast*)a;
+		return LengthOfNameBeast(b);
+	}
+}
+
+bool Compare(animal *first, animal *second) {
+	return LengthOfName(first) < LengthOfName(second);
 }

@@ -19,6 +19,8 @@ void InFish(fish* &f, ifstream &ifst);
 
 void OutFish(fish* &f, ofstream &ofst);
 
+int LengthOfNameFish(fish *f);
+
 struct bird {
 	key k;
 	char name[256];
@@ -29,6 +31,8 @@ struct bird {
 void InBird(bird* &b, ifstream &ifst);
 
 void OutBird(bird* &b, ofstream &ofst);
+
+int LengthOfNameBird(bird *b);
 
 struct beast {
 	key k;
@@ -42,6 +46,8 @@ void InBeast(beast* &b, ifstream &ifst);
 
 void OutBeast(beast* &b, ofstream &ofst);
 
+int LengthOfNameBeast(beast *b);
+
 struct animal {
 	// значения ключей для каждого вида животных
 	key k; // ключ
@@ -50,6 +56,7 @@ struct animal {
 
 animal* In(ifstream &ifst);
 void Out(animal *a, ofstream &ofst);
+int LengthOfName(animal *a);
 
 // Простейший контейнер на основе одномерного массива
 struct container {
@@ -62,3 +69,5 @@ void Init(container &c);
 void Clear(container &c);
 void In(container &c, ifstream &ifst);
 void Out(container &c, ofstream &ofst);
+bool Compare(animal *first, animal *second);
+void Sort(container &c);
