@@ -34,6 +34,19 @@ void Out(container &c, ofstream &ofst) {
 	}
 }
 
+//-----------------------------------------------------
+// Сортировка содержимого контейнера
+void Sort(container &c) {
+	for (int i = 0; i < c.len - 1; i++) {
+		for (int j = i + 1; j < c.len; j++) {
+			if (Compare(c.cont[i], c.cont[j])) {
+				animal *tmp = c.cont[i];
+				c.cont[i] = c.cont[j];
+				c.cont[j] = tmp;
+			}
+		}
+	}
+}
 void InFish(fish* &f, ifstream &ifst) {
 	ifst.getline(f->name, 256);
 	int k;
@@ -155,4 +168,8 @@ int LengthOfName(animal *a) {
 		b = (bird*)a;
 		return LengthOfNameBird(b);
 	}
+}
+
+bool Compare(animal *first, animal *second) {
+	return LengthOfName(first) < LengthOfName(second);
 }

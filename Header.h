@@ -38,6 +38,9 @@ animal* In(ifstream &ifst);
 void Out(animal *a, ofstream &ofst);
 int LengthOfName(animal *a);
 
+//-----------------------------------------------------
+// Cравнение ключей двух программных объектов
+bool Compare(animal *first, animal *second);
 // Простейший контейнер на основе одномерного массива
 struct container {
 	enum { max_len = 100 }; // максимальная длина
@@ -49,3 +52,4 @@ void Init(container &c);
 void Clear(container &c);
 void In(container &c, ifstream &ifst);
 void Out(container &c, ofstream &ofst);
+void Sort(container &c);
