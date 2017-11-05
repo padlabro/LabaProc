@@ -35,6 +35,7 @@ void Out(container &c, ofstream &ofst) {
 
 void InFish(fish* &f, ifstream &ifst) {
 	ifst.getline(f->name, 256);
+	ifst >> f->age;
 	int k;
 	ifst >> k;
 	switch (k) {
@@ -52,7 +53,8 @@ void InFish(fish* &f, ifstream &ifst) {
 
 void OutFish(fish* &f, ofstream &ofst) {
 	ofst << "It is fish. It is ";
-	ofst << f->name << ". It lives in ";
+	ofst << f->name << "." << endl;
+	ofst << "It is " << f->age << " years old." << endl << "It lives in ";
 	switch (f->h) {
 	case fish::habitat::RIVER:
 		ofst << "river." << endl;
@@ -69,6 +71,7 @@ void OutFish(fish* &f, ofstream &ofst) {
 void InBird(bird* &b,ifstream &ifst)
 {
 	ifst.getline(b->name, 256);
+	ifst >> b->age;
 	int k;
 	ifst >> k;
 	switch (k) {
@@ -83,7 +86,8 @@ void InBird(bird* &b,ifstream &ifst)
 
 void OutBird(bird* &b, ofstream &ofst) {
 	ofst << "It is bird. It is ";
-	ofst << b->name << ". It is ";
+	ofst << b->name << endl;
+	ofst << "It is " << b->age << " years old." << endl << "It is ";
 	switch (b->migratory) {
 	case false:
 		ofst << "not ";
@@ -92,6 +96,7 @@ void OutBird(bird* &b, ofstream &ofst) {
 		break;
 	}
 	ofst << "migratory." << endl;
+
 }
 
 animal* In(ifstream &ifst) {

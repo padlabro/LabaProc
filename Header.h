@@ -10,6 +10,7 @@ enum key { FISH, BIRD };
 struct fish {
 	key k;
 	char name[256];
+	int age;
 	enum habitat { RIVER, SEA, LAKE };; // место проживания
 	habitat h;
 };
@@ -21,6 +22,7 @@ void OutFish(fish* &f, ofstream &ofst);
 struct bird {
 	key k;
 	char name[256];
+	int age;
 	bool migratory; // перелетные или нет
 };
 
