@@ -86,7 +86,7 @@ void InBird(bird* &b,ifstream &ifst)
 
 void OutBird(bird* &b, ofstream &ofst) {
 	ofst << "It is bird. It is ";
-	ofst << b->name << endl;
+	ofst << b->name << "." << endl;
 	ofst << "It is " << b->age << " years old." << endl << "It is ";
 	switch (b->migratory) {
 	case false:
@@ -102,6 +102,7 @@ void OutBird(bird* &b, ofstream &ofst) {
 void InBeast(beast* &b, ifstream &ifst)
 {
 	ifst.getline(b->name, 256);
+	ifst >> b->age;
 	int k;
 	ifst >> k;
 	switch (k) {
@@ -119,7 +120,8 @@ void InBeast(beast* &b, ifstream &ifst)
 
 void OutBeast(beast* &b, ofstream &ofst) {
 	ofst << "It is beast. It is ";
-	ofst << b->name << ". It is ";
+	ofst << b->name << "." << endl;
+	ofst << "It is " << b->age << " years old." << endl << "It is ";
 	switch (b->t) {
 	case beast::type::PREDATOR:
 		ofst << "predator." << endl;

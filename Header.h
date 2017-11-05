@@ -33,6 +33,7 @@ void OutBird(bird* &b, ofstream &ofst);
 struct beast {
 	key k;
 	char name[256];
+	int age;
 	enum type { PREDATOR, HERBIVORE, INSECTIVORE };; // тип зверя (хищник, травоядный, насекомоядный)
 	type t;
 };
