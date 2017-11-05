@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
 
 	In(c, ifst);
 	ofst << "Filled container. " << endl;
-	Out(c, ofst);
+	OutFish(c, ofst);
 
 	Clear(c);
 	ofst << "Empty container. " << endl;

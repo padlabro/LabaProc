@@ -33,6 +33,31 @@ void Out(container &c, ofstream &ofst) {
 	}
 }
 
+//-----------------------------------------------------
+// Вывод только рыб
+void OutFish(container &c, ofstream &ofst) {
+	ofst << "Only fishes." << endl;
+	for (int i = 0; i < c.len; i++) {
+		if (c.cont[i]->k == key::FISH) {
+			ofst << i << ": ";
+			Out((c.cont[i]), ofst);
+		}
+		else
+			ofst << endl;
+	}
+}//-----------------------------------------------------
+// Вывод только прямоугольников
+void OutBird(container &c, ofstream &ofst) {
+	ofst << "Only birds." << endl;
+	for (int i = 0; i < c.len; i++) {
+		if (c.cont[i]->k == key::BIRD) {
+			ofst << i << ": ";
+			Out((c.cont[i]), ofst);
+		}
+		else
+			ofst << endl;
+	}
+}
 void InFish(fish* &f, ifstream &ifst) {
 	ifst.getline(f->name, 256);
 	int k;
