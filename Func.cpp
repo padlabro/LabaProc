@@ -94,10 +94,45 @@ void OutBird(bird* &b, ofstream &ofst) {
 	ofst << "migratory." << endl;
 }
 
+void InBeast(beast* &b, ifstream &ifst)
+{
+	ifst.getline(b->name, 256);
+	int k;
+	ifst >> k;
+	switch (k) {
+	case 1:
+		b->t = beast::type::PREDATOR;
+		break;
+	case 2:
+		b->t = beast::type::HERBIVORE;
+		break;
+	case 3:
+		b->t = beast::type::INSECTIVORE;
+		break;
+	}
+}
+
+void OutBeast(beast* &b, ofstream &ofst) {
+	ofst << "It is beast. It is ";
+	ofst << b->name << ". It is ";
+	switch (b->t) {
+	case beast::type::PREDATOR:
+		ofst << "predator." << endl;
+		break;
+	case beast::type::HERBIVORE:
+		ofst << "herbivore." << endl;
+		break;
+	case beast::type::INSECTIVORE:
+		ofst << "insectivore." << endl;
+		break;
+	}
+}
+
 animal* In(ifstream &ifst) {
 	animal *a;
 	fish *f;
 	bird *b;
+	beast *be;
 	int k1;
 	ifst >> k1;
 	char t[256];
@@ -113,6 +148,11 @@ animal* In(ifstream &ifst) {
 		b->k = BIRD;
 		InBird(b, ifst);
 		return (animal*)b;
+	case 3:
+		be = new beast;
+		be->k = BEAST;
+		InBeast(be, ifst);
+		return (animal*)be;
 	default:
 		return 0;
 	}
@@ -121,6 +161,7 @@ animal* In(ifstream &ifst) {
 void Out(animal *a, ofstream &ofst) {
 	fish *f;
 	bird *b;
+	beast *be;
 	switch (a->k) {
 	case FISH:
 		f = (fish*)a;
@@ -129,6 +170,10 @@ void Out(animal *a, ofstream &ofst) {
 	case BIRD:
 		b = (bird*)a;
 		OutBird(b, ofst);
+		break;
+	case BEAST:
+		be = (beast*)a;
+		OutBeast(be, ofst);
 		break;
 	default:
 		ofst << "Incorrect animal!" << endl;

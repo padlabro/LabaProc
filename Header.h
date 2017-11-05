@@ -5,7 +5,7 @@
 
 using namespace std;
 
-enum key { FISH, BIRD };
+enum key { FISH, BIRD, BEAST };
 
 struct fish {
 	key k;
@@ -27,6 +27,17 @@ struct bird {
 void InBird(bird* &b, ifstream &ifst);
 
 void OutBird(bird* &b, ofstream &ofst);
+
+struct beast {
+	key k;
+	char name[256];
+	enum type { PREDATOR, HERBIVORE, INSECTIVORE };; // тип зверя (хищник, травоядный, насекомоядный)
+	type t;
+};
+
+void InBeast(beast* &b, ifstream &ifst);
+
+void OutBeast(beast* &b, ofstream &ofst);
 
 struct animal {
 	// значения ключей для каждого вида животных
