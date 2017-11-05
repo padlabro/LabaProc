@@ -30,6 +30,7 @@ void Out(container &c, ofstream &ofst) {
 	for (int i = 0; i < c.len; i++) {
 		ofst << i + 1 << ": ";
 		Out((c.cont[i]), ofst);
+		ofst << "Length of name = " << LengthOfName(c.cont[i]) << "." << endl;
 	}
 }
 
@@ -66,6 +67,10 @@ void OutFish(fish* &f, ofstream &ofst) {
 	}
 }
 
+int LengthOfNameFish(fish *f) {
+	return strlen(f->name);
+}
+
 void InBird(bird* &b,ifstream &ifst)
 {
 	ifst.getline(b->name, 256);
@@ -92,6 +97,10 @@ void OutBird(bird* &b, ofstream &ofst) {
 		break;
 	}
 	ofst << "migratory." << endl;
+}
+
+int LengthOfNameBird(bird *b) {
+	return strlen(b->name);
 }
 
 animal* In(ifstream &ifst) {
@@ -132,5 +141,18 @@ void Out(animal *a, ofstream &ofst) {
 		break;
 	default:
 		ofst << "Incorrect animal!" << endl;
+	}
+}
+
+int LengthOfName(animal *a) {
+	fish *f;
+	bird *b;
+	switch (a->k) {
+	case FISH:
+		f = (fish*)a;
+		return LengthOfNameFish(f);
+	case BIRD:
+		b = (bird*)a;
+		return LengthOfNameBird(b);
 	}
 }
