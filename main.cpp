@@ -25,6 +25,10 @@ int main(int argc, char* argv[]) {
 	ofst << "Filled container. " << endl;
 	Sort(c);
 	Out(c, ofst);
+	
+	ofst << "Only fishes. " << endl;
+	OutFish(c, ofst);
+
 
 	Clear(c);
 	ofst << "Empty container. " << endl;

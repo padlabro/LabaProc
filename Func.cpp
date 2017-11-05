@@ -48,6 +48,51 @@ void Sort(container &c) {
 	}
 }
 
+//-----------------------------------------------------
+// Вывод только рыб
+void OutFish(container &c, ofstream &ofst) {
+	ofst << "Only fishes." << endl;
+	for (int i = 0; i < c.len; i++) {
+		if (c.cont[i]->k == key::FISH) {
+			ofst << i << ": ";
+			Out((c.cont[i]), ofst);
+			ofst << "Length of name = " << LengthOfName(c.cont[i]) << "." << endl;
+		}
+		else
+			ofst << endl;
+	}
+}
+
+//-----------------------------------------------------
+// Вывод только птиц
+void OutBird(container &c, ofstream &ofst) {
+	ofst << "Only birds." << endl;
+	for (int i = 0; i < c.len; i++) {
+		if (c.cont[i]->k == key::BIRD) {
+			ofst << i << ": ";
+			Out((c.cont[i]), ofst);
+			ofst << "Length of name = " << LengthOfName(c.cont[i]) << "." << endl;
+		}
+		else
+			ofst << endl;
+	}
+}
+
+//-----------------------------------------------------
+// Вывод только зверей
+void OutBeast(container &c, ofstream &ofst) {
+	ofst << "Only beasts." << endl;
+	for (int i = 0; i < c.len; i++) {
+		if (c.cont[i]->k == key::BEAST) {
+			ofst << i << ": ";
+			Out((c.cont[i]), ofst);
+			ofst << "Length of name = " << LengthOfName(c.cont[i]) << "." << endl;
+		}
+		else
+			ofst << endl;
+	}
+}
+
 void InFish(fish* &f, ifstream &ifst) {
 	ifst.getline(f->name, 256);
 	ifst >> f->age;
@@ -83,8 +128,7 @@ void OutFish(fish* &f, ofstream &ofst) {
 	}
 }
 
-void InBird(bird* &b,ifstream &ifst)
-{
+void InBird(bird* &b,ifstream &ifst){
 	ifst.getline(b->name, 256);
 	ifst >> b->age;
 	int k;
@@ -113,8 +157,7 @@ void OutBird(bird* &b, ofstream &ofst) {
 	ofst << "migratory." << endl;
 }
 
-void InBeast(beast* &b, ifstream &ifst)
-{
+void InBeast(beast* &b, ifstream &ifst){
 	ifst.getline(b->name, 256);
 	ifst >> b->age;
 	int k;

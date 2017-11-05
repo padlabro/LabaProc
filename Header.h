@@ -71,3 +71,6 @@ void In(container &c, ifstream &ifst);
 void Out(container &c, ofstream &ofst);
 bool Compare(animal *first, animal *second);
 void Sort(container &c);
+void OutFish(container &c, ofstream &ofst);
+void OutBird(container &c, ofstream &ofst);
+void OutBeast(container &c, ofstream &ofst);
