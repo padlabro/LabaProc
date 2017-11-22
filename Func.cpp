@@ -259,6 +259,7 @@ int LengthOfNameBeast(beast *b) {
 int LengthOfName(animal *a) {
 	fish *f;
 	bird *b;
+	beast *be;
 	switch (a->k) {
 	case FISH:
 		f = (fish*)a;
@@ -267,8 +268,8 @@ int LengthOfName(animal *a) {
 		b = (bird*)a;
 		return LengthOfNameBird(b);
 	case BEAST:
-		b = (beast*)a;
-		return LengthOfNameBeast(b);
+		be = (beast*)a;
+		return LengthOfNameBeast(be);
 	}
 }
 
