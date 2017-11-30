@@ -410,3 +410,110 @@ bool Compare(animal *first, animal *second)
 {
 	return LengthOfName(first) < LengthOfName(second);
 }
+
+void Multimethod(container &c, ofstream &ofst)
+{
+	CheckOutputFile(ofst);
+	if (c.len)
+	{
+		ofst << "Multimethods:\n";
+	}
+	else
+	{
+		ofst << "Container is empty.\n";
+		return;
+	}
+
+	animal* a1;
+	animal* a2;
+	for (int i = 0; i < c.len; i++)
+	{
+		a1 = c.cont[i];
+		for (int j = 0; j < c.len; j++)
+		{
+			a2 = c.cont[j];
+			switch (a1->k)
+			{
+			case FISH:
+			{
+				switch (a2->k)
+				{
+				case FISH:
+				{
+					ofst << "Fish and Fish:\n";
+					break;
+				}
+				case BIRD:
+				{
+					ofst << "Fish and Bird:\n";
+					break;
+				}
+				case BEAST:
+				{
+					ofst << "Fish and Beast:\n";
+					break;
+				}
+				default:
+					break;
+				}
+				break;
+			}
+			case BIRD:
+			{
+				switch (a2->k)
+				{
+				case FISH:
+				{
+					ofst << "Bird and Fish:\n";
+					break;
+				}
+				case BIRD:
+				{
+					ofst << "Bird and Bird:\n";
+					break;
+				}
+				case BEAST:
+				{
+					ofst << "Bird and Beast:\n";
+					break;
+				}
+				default:
+					break;
+				}
+				break;
+			}
+			case BEAST:
+			{
+				switch (a2->k)
+				{
+				case FISH:
+				{
+					ofst << "Beast and Fish:\n";
+					break;
+				}
+				case BIRD:
+				{
+					ofst << "Beast and Bird:\n";
+					break;
+				}
+				case BEAST:
+				{
+					ofst << "Beast and Beast:\n";
+					break;
+				}
+				default:
+					break;
+				}
+				break;
+			}
+			default:
+				break;
+			}
+
+			Out(a1, ofst);
+			Out(a2, ofst);
+			ofst << endl;
+		}
+	}
+	ofst.close();
+}

@@ -24,11 +24,9 @@ int main(int argc, char* argv[])
 	Init(c);
 
 	In(c, ifst);
-	ofst << "Filled container. " << endl;
-	Sort(c);
-	Out(c, ofst);
+	Multimethod(c, ofst);
 	cout << "Stop" << endl;
-	
+
 	ifst.close();
 	ofst.close();
 	return 0;
