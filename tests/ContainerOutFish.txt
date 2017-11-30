@@ -1,0 +1,7 @@
+Only fishes.
+1: It is fish. It is Okun.
+It is 4 years old.
+It lives in river.
+Length of name = 4.
+
+

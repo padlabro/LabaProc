@@ -1,0 +1,7 @@
+Only beasts.
+
+
+3: It is beast. It is Tiger.
+It is 4 years old.
+It is predator.
+Length of name = 5.

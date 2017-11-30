@@ -1,0 +1,9 @@
+Container contains 2 elements.
+1: It is fish. It is Okun.
+It is 4 years old.
+It lives in river.
+Length of name = 4.
+2: It is beast. It is Lion.
+It is 4 years old.
+It is predator.
+Length of name = 4.

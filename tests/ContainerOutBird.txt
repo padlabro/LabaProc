@@ -1,0 +1,7 @@
+Only birds.
+
+2: It is bird. It is Sinica.
+It is 4 years old.
+It is not migratory.
+Length of name = 6.
+

@@ -54,7 +54,7 @@ void OutFish(container &c, ofstream &ofst) {
 	ofst << "Only fishes." << endl;
 	for (int i = 0; i < c.len; i++) {
 		if (c.cont[i]->k == key::FISH) {
-			ofst << i << ": ";
+			ofst << i + 1 << ": ";
 			Out((c.cont[i]), ofst);
 			ofst << "Length of name = " << LengthOfName(c.cont[i]) << "." << endl;
 		}
@@ -69,7 +69,7 @@ void OutBird(container &c, ofstream &ofst) {
 	ofst << "Only birds." << endl;
 	for (int i = 0; i < c.len; i++) {
 		if (c.cont[i]->k == key::BIRD) {
-			ofst << i << ": ";
+			ofst << i + 1 << ": ";
 			Out((c.cont[i]), ofst);
 			ofst << "Length of name = " << LengthOfName(c.cont[i]) << "." << endl;
 		}
@@ -84,7 +84,7 @@ void OutBeast(container &c, ofstream &ofst) {
 	ofst << "Only beasts." << endl;
 	for (int i = 0; i < c.len; i++) {
 		if (c.cont[i]->k == key::BEAST) {
-			ofst << i << ": ";
+			ofst << i + 1 << ": ";
 			Out((c.cont[i]), ofst);
 			ofst << "Length of name = " << LengthOfName(c.cont[i]) << "." << endl;
 		}

@@ -1,14 +1,15 @@
-#include "Header.h"
 #include <stdio.h> 
 #include <stdlib.h>
 #include <fstream>
 #include <iostream>
+#include "gtest/gtest.h"
+#include "Test.h"
 
 using namespace std;
 
 int main(int argc, char* argv[]) {
 
-	if (argc != 3) {
+	/*if (argc != 3) {
 		cout << "incorrect command line! Waited: command in_file out_file" << endl;
 		exit(1);
 	}
@@ -34,6 +35,8 @@ int main(int argc, char* argv[]) {
 	ofst << "Empty container. " << endl;
 	Out(c, ofst);
 
-	cout << "Stop" << endl;
-	return 0;
+	cout << "Stop" << endl;*/
+	::testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
+	//return 0;
 }
