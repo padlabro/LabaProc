@@ -7,7 +7,8 @@ using namespace std;
 
 enum key { FISH, BIRD, BEAST };
 
-struct fish {
+struct fish 
+{
 	key k;
 	char name[256];
 	int age;
@@ -21,7 +22,8 @@ void OutFish(fish* &f, ofstream &ofst);
 
 int LengthOfNameFish(fish *f);
 
-struct bird {
+struct bird 
+{
 	key k;
 	char name[256];
 	int age;
@@ -34,7 +36,8 @@ void OutBird(bird* &b, ofstream &ofst);
 
 int LengthOfNameBird(bird *b);
 
-struct beast {
+struct beast 
+{
 	key k;
 	char name[256];
 	int age;
@@ -48,7 +51,8 @@ void OutBeast(beast* &b, ofstream &ofst);
 
 int LengthOfNameBeast(beast *b);
 
-struct animal {
+struct animal 
+{
 	// значения ключей для каждого вида животных
 	key k; // ключ
 		   // используемые альтернативы
@@ -59,7 +63,8 @@ void Out(animal *a, ofstream &ofst);
 int LengthOfName(animal *a);
 
 // Простейший контейнер на основе одномерного массива
-struct container {
+struct container 
+{
 	enum { max_len = 100 }; // максимальная длина
 	int len; 			 // текущая длина
 	animal *cont[max_len];

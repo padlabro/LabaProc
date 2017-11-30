@@ -8,14 +8,16 @@ using namespace std;
 class FishTest : public ::testing::Test {	
 };
 
-TEST_F(FishTest, CheckZeroLength) {
+TEST_F(FishTest, CheckZeroLength) 
+{
 	fish f;
 	strcpy_s(f.name,"");
 	int expected = 0;
 	ASSERT_EQ(expected, LengthOfNameFish(&f));
 }
 
-TEST_F(FishTest, CheckLength) {
+TEST_F(FishTest, CheckLength) 
+{
 	fish f;
 	strcpy_s(f.name, "Okun");
 	int expected = 4;
@@ -23,7 +25,8 @@ TEST_F(FishTest, CheckLength) {
 }
 
 
-TEST_F(FishTest, CheckInput) {
+TEST_F(FishTest, CheckInput) 
+{
 	ifstream ifst("InFish.txt");
 	fish* actual;
 	actual = new fish;
@@ -39,7 +42,8 @@ TEST_F(FishTest, CheckInput) {
 	ASSERT_EQ(actual->h, f.h);
 }
 
-TEST_F(FishTest, CheckOutput) {
+TEST_F(FishTest, CheckOutput) 
+{
 	ofstream ofst("OutTest.txt");
 	fish *f = new fish;
 	strcpy_s(f->name, "Okun");
@@ -61,14 +65,16 @@ TEST_F(FishTest, CheckOutput) {
 class BirdTest : public ::testing::Test {
 };
 
-TEST_F(BirdTest, CheckZeroLength) {
+TEST_F(BirdTest, CheckZeroLength) 
+{
 	bird b;
 	strcpy_s(b.name, "");
 	int expected = 0;
 	ASSERT_EQ(expected, LengthOfNameBird(&b));
 }
 
-TEST_F(BirdTest, CheckLength) {
+TEST_F(BirdTest, CheckLength) 
+{
 	bird b;
 	strcpy_s(b.name, "Sinica");
 	int expected = 6;
@@ -76,7 +82,8 @@ TEST_F(BirdTest, CheckLength) {
 }
 
 
-TEST_F(BirdTest, CheckInput) {
+TEST_F(BirdTest, CheckInput) 
+{
 	ifstream ifst("InBird.txt");
 	bird* actual;
 	actual = new bird;
@@ -92,7 +99,8 @@ TEST_F(BirdTest, CheckInput) {
 	ASSERT_EQ(actual->migratory, b.migratory);
 }
 
-TEST_F(BirdTest, CheckOutput) {
+TEST_F(BirdTest, CheckOutput) 
+{
 	ofstream ofst("OutTest.txt");
 	bird* b = new bird;
 	strcpy_s(b->name, "Sinica");
@@ -113,14 +121,16 @@ TEST_F(BirdTest, CheckOutput) {
 class BeastTest : public ::testing::Test {
 };
 
-TEST_F(BeastTest, CheckZeroLength) {
+TEST_F(BeastTest, CheckZeroLength) 
+{
 	beast be;
 	strcpy_s(be.name, "");
 	int expected = 0;
 	ASSERT_EQ(expected, LengthOfNameBeast(&be));
 }
 
-TEST_F(BeastTest, CheckLength) {
+TEST_F(BeastTest, CheckLength) 
+{
 	beast be;
 	strcpy_s(be.name, "Tiger");
 	int expected = 5;
@@ -128,7 +138,8 @@ TEST_F(BeastTest, CheckLength) {
 }
 
 
-TEST_F(BeastTest, CheckInput) {
+TEST_F(BeastTest, CheckInput) 
+{
 	ifstream ifst("InBeast.txt");
 	beast* actual;
 	actual = new beast;
@@ -144,7 +155,8 @@ TEST_F(BeastTest, CheckInput) {
 	ASSERT_EQ(actual->t, be.t);
 }
 
-TEST_F(BeastTest, CheckOutput) {
+TEST_F(BeastTest, CheckOutput) 
+{
 	ofstream ofst("OutTest.txt");
 	beast* be = new beast;
 	strcpy_s(be->name, "Tiger");
@@ -165,7 +177,8 @@ TEST_F(BeastTest, CheckOutput) {
 class AnimalTest : public ::testing::Test {
 };
 
-TEST_F(AnimalTest, CheckInputFish) {
+TEST_F(AnimalTest, CheckInputFish) 
+{
 	ifstream ifst("AnimalInFish.txt");
 	fish* actual = (fish *)In(ifst);
 
@@ -182,7 +195,8 @@ TEST_F(AnimalTest, CheckInputFish) {
 	ASSERT_EQ(expected->h, actual->h);
 }
 
-TEST_F(AnimalTest, CheckInputBird) {
+TEST_F(AnimalTest, CheckInputBird) 
+{
 	ifstream ifst("AnimalInBird.txt");
 	bird* actual = (bird *)In(ifst);
 
@@ -199,7 +213,8 @@ TEST_F(AnimalTest, CheckInputBird) {
 	ASSERT_EQ(expected->migratory, actual->migratory);
 }
 
-TEST_F(AnimalTest, CheckInputBeast) {
+TEST_F(AnimalTest, CheckInputBeast) 
+{
 	ifstream ifst("AnimalInBeast.txt");
 	beast* actual = (beast *)In(ifst);
 
@@ -216,7 +231,8 @@ TEST_F(AnimalTest, CheckInputBeast) {
 	ASSERT_EQ(expected->t, actual->t);
 }
 
-TEST_F(AnimalTest, CheckOutputFish) {
+TEST_F(AnimalTest, CheckOutputFish) 
+{
 	ofstream ofst("OutTest.txt");
 
 	fish* f = new fish;
@@ -234,7 +250,8 @@ TEST_F(AnimalTest, CheckOutputFish) {
 	ASSERT_TRUE(flag);
 }
 
-TEST_F(AnimalTest, CheckOutputBird) {
+TEST_F(AnimalTest, CheckOutputBird) 
+{
 	ofstream ofst("OutTest.txt");
 
 	bird* b = new bird;
@@ -252,7 +269,8 @@ TEST_F(AnimalTest, CheckOutputBird) {
 	ASSERT_TRUE(flag);
 }
 
-TEST_F(AnimalTest, CheckOutputBeast) {
+TEST_F(AnimalTest, CheckOutputBeast) 
+{
 	ofstream ofst("OutTest.txt");
 
 	beast* be = new beast;
@@ -270,7 +288,8 @@ TEST_F(AnimalTest, CheckOutputBeast) {
 	ASSERT_TRUE(flag);
 }
 
-TEST_F(AnimalTest, CheckCompare) {
+TEST_F(AnimalTest, CheckCompare) 
+{
 	fish* a1 = new fish;
 	a1->k = key::FISH;
 	strcpy_s(a1->name, "Okun");
@@ -288,7 +307,8 @@ TEST_F(AnimalTest, CheckCompare) {
 class ContainerTest : public ::testing::Test {
 };
 
-TEST_F(ContainerTest, CheckInitContainer) {
+TEST_F(ContainerTest, CheckInitContainer) 
+{
 
 	container c;
 	Init(c);
@@ -296,7 +316,8 @@ TEST_F(ContainerTest, CheckInitContainer) {
 	ASSERT_EQ(c.len, 0);
 }
 
-TEST_F(ContainerTest, CheckClearEmptyContainer) {
+TEST_F(ContainerTest, CheckClearEmptyContainer) 
+{
 
 	container c;
 	c.len = 0;
@@ -305,7 +326,8 @@ TEST_F(ContainerTest, CheckClearEmptyContainer) {
 	ASSERT_EQ(c.len, 0);
 }
 
-TEST_F(ContainerTest, CheckClearContainer) {
+TEST_F(ContainerTest, CheckClearContainer) 
+{
 
 	container c;
 	c.len = 0;
@@ -317,7 +339,8 @@ TEST_F(ContainerTest, CheckClearContainer) {
 	ASSERT_EQ(c.len, 0);
 }
 
-TEST_F(ContainerTest, CheckOutFish) {
+TEST_F(ContainerTest, CheckOutFish) 
+{
 	ofstream ofst("OutTest.txt");
 
 	container c;
@@ -356,7 +379,8 @@ TEST_F(ContainerTest, CheckOutFish) {
 	ASSERT_TRUE(flag);
 }
 
-TEST_F(ContainerTest, CheckOutBird) {
+TEST_F(ContainerTest, CheckOutBird) 
+{
 	ofstream ofst("OutTest.txt");
 
 	container c;
@@ -395,7 +419,8 @@ TEST_F(ContainerTest, CheckOutBird) {
 	ASSERT_TRUE(flag);
 }
 
-TEST_F(ContainerTest, CheckOutBeast) {
+TEST_F(ContainerTest, CheckOutBeast) 
+{
 	ofstream ofst("OutTest.txt");
 
 	container c;
@@ -434,7 +459,8 @@ TEST_F(ContainerTest, CheckOutBeast) {
 	ASSERT_TRUE(flag);
 }
 
-TEST_F(ContainerTest, CheckSort) {
+TEST_F(ContainerTest, CheckSort) 
+{
 	ofstream ofst("OutTest.txt");
 
 	container c;
@@ -474,7 +500,8 @@ TEST_F(ContainerTest, CheckSort) {
 	ASSERT_TRUE(flag);
 }
 
-TEST_F(ContainerTest, CheckSortEmpty) {
+TEST_F(ContainerTest, CheckSortEmpty) 
+{
 	ofstream ofst("OutTest.txt");
 
 	container c;
@@ -490,7 +517,8 @@ TEST_F(ContainerTest, CheckSortEmpty) {
 	ASSERT_TRUE(flag);
 }
 
-TEST_F(ContainerTest, CheckSortEqual) {
+TEST_F(ContainerTest, CheckSortEqual) 
+{
 	ofstream ofst("OutTest.txt");
 
 	container c;
@@ -522,7 +550,8 @@ TEST_F(ContainerTest, CheckSortEqual) {
 	ASSERT_TRUE(flag);
 }
 
-TEST_F(ContainerTest, CheckOut) {
+TEST_F(ContainerTest, CheckOut) 
+{
 	ofstream ofst("OutTest.txt");
 
 	container c;

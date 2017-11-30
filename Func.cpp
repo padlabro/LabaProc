@@ -7,34 +7,42 @@
 
 using namespace std;
 
-void Init(container &c) {
+void Init(container &c) 
+{
 	c.len = 0;
 }
 
-void Clear(container &c) {
-	for (int i = 0; i < c.len; i++) {
+void Clear(container &c) 
+{
+	for (int i = 0; i < c.len; i++) 
+	{
 		delete c.cont[i];
 	}
 	c.len = 0;
 }
 
-void In(container &c, ifstream &ifst) {
+void In(container &c, ifstream &ifst) 
+{
 	CheckInputFile(ifst);
-	while (!ifst.eof() && container::max_len != c.len) {
-		if ((c.cont[c.len] = In(ifst)) != 0) {
+	while (!ifst.eof() && container::max_len != c.len) 
+	{
+		if ((c.cont[c.len] = In(ifst)) != 0) 
+		{
 			c.len++;
 		}
 	}
 }
 
-void Out(container &c, ofstream &ofst) {
+void Out(container &c, ofstream &ofst) 
+{
 	CheckOutputFile(ofst);
 	if (c.len) 
 		ofst << "Container contains " << c.len << " elements." << endl;
 	else 
 		ofst << "Container is empty:\n";
 
-	for (int i = 0; i < c.len; i++) {
+	for (int i = 0; i < c.len; i++) 
+	{
 		ofst << i + 1 << ": ";
 		Out((c.cont[i]), ofst);
 		ofst << "Length of name = " << LengthOfName(c.cont[i]) << "." << endl;
@@ -43,10 +51,14 @@ void Out(container &c, ofstream &ofst) {
 
 //-----------------------------------------------------
 // Сортировка содержимого контейнера
-void Sort(container &c) {
-	for (int i = 0; i < c.len - 1; i++) {
-		for (int j = i + 1; j < c.len; j++) {
-			if (Compare(c.cont[i], c.cont[j])) {
+void Sort(container &c) 
+{
+	for (int i = 0; i < c.len - 1; i++) 
+	{
+		for (int j = i + 1; j < c.len; j++) 
+		{
+			if (Compare(c.cont[i], c.cont[j])) 
+			{
 				animal *tmp = c.cont[i];
 				c.cont[i] = c.cont[j];
 				c.cont[j] = tmp;
@@ -57,17 +69,21 @@ void Sort(container &c) {
 
 //-----------------------------------------------------
 // Вывод только рыб
-void OutFish(container &c, ofstream &ofst) {
+void OutFish(container &c, ofstream &ofst) 
+{
 	CheckOutputFile(ofst);
-	if (c.len) {
+	if (c.len) 
+	{
 		ofst << "Container contains " << c.len << " elements." << endl;
 		ofst << "Only fishes." << endl;
 	}
 	else
 		ofst << "Container is empty:\n";
 
-	for (int i = 0; i < c.len; i++) {
-		if (c.cont[i]->k == key::FISH) {
+	for (int i = 0; i < c.len; i++) 
+	{
+		if (c.cont[i]->k == key::FISH) 
+		{
 			ofst << i + 1 << ": ";
 			Out((c.cont[i]), ofst);
 			ofst << "Length of name = " << LengthOfName(c.cont[i]) << "." << endl;
@@ -79,17 +95,21 @@ void OutFish(container &c, ofstream &ofst) {
 
 //-----------------------------------------------------
 // Вывод только птиц
-void OutBird(container &c, ofstream &ofst) {
+void OutBird(container &c, ofstream &ofst) 
+{
 	CheckOutputFile(ofst);
-	if (c.len) {
+	if (c.len) 
+	{
 		ofst << "Container contains " << c.len << " elements." << endl;
 		ofst << "Only birds." << endl;
 	}
 	else
 		ofst << "Container is empty:\n";
 	
-	for (int i = 0; i < c.len; i++) {
-		if (c.cont[i]->k == key::BIRD) {
+	for (int i = 0; i < c.len; i++) 
+	{
+		if (c.cont[i]->k == key::BIRD) 
+		{
 			ofst << i + 1 << ": ";
 			Out((c.cont[i]), ofst);
 			ofst << "Length of name = " << LengthOfName(c.cont[i]) << "." << endl;
@@ -101,17 +121,21 @@ void OutBird(container &c, ofstream &ofst) {
 
 //-----------------------------------------------------
 // Вывод только зверей
-void OutBeast(container &c, ofstream &ofst) {
+void OutBeast(container &c, ofstream &ofst) 
+{
 	CheckOutputFile(ofst);
-	if (c.len) {
+	if (c.len) 
+	{
 		ofst << "Container contains " << c.len << " elements." << endl;
 		ofst << "Only beasts." << endl;
 	}
 	else
 		ofst << "Container is empty:\n";
 
-	for (int i = 0; i < c.len; i++) {
-		if (c.cont[i]->k == key::BEAST) {
+	for (int i = 0; i < c.len; i++)
+	{
+		if (c.cont[i]->k == key::BEAST) 
+		{
 			ofst << i + 1 << ": ";
 			Out((c.cont[i]), ofst);
 			ofst << "Length of name = " << LengthOfName(c.cont[i]) << "." << endl;
@@ -121,7 +145,8 @@ void OutBeast(container &c, ofstream &ofst) {
 	}
 }
 
-void InFish(fish* &f, ifstream &ifst) {
+void InFish(fish* &f, ifstream &ifst) 
+{
 	CheckInputFile(ifst);
 	ifst.getline(f->name, 256);
 	CheckWrongInput(ifst);
@@ -136,7 +161,8 @@ void InFish(fish* &f, ifstream &ifst) {
 		cerr << "Error: unknown type" << endl;
 		exit(1);
 	}
-	switch (k) {
+	switch (k) 
+	{
 	case 1:
 		f->h = fish::habitat::RIVER;
 		break;
@@ -152,12 +178,14 @@ void InFish(fish* &f, ifstream &ifst) {
 	}
 }
 
-void OutFish(fish* &f, ofstream &ofst) {
+void OutFish(fish* &f, ofstream &ofst) 
+{
 	CheckOutputFile(ofst);
 	ofst << "It is fish. It is ";
 	ofst << f->name << "." << endl;
 	ofst << "It is " << f->age << " years old." << endl << "It lives in ";
-	switch (f->h) {
+	switch (f->h) 
+	{
 	case fish::habitat::RIVER:
 		ofst << "river." << endl;
 		break;
@@ -173,7 +201,8 @@ void OutFish(fish* &f, ofstream &ofst) {
 	}
 }
 
-void InBird(bird* &b,ifstream &ifst){
+void InBird(bird* &b,ifstream &ifst)
+{
 	CheckInputFile(ifst);
 	ifst.getline(b->name, 256);
 	CheckWrongInput(ifst);
@@ -188,7 +217,8 @@ void InBird(bird* &b,ifstream &ifst){
 		cerr << "Error: unknown type" << endl;
 		exit(1);
 	}
-	switch (k) {
+	switch (k) 
+	{
 	case 0:
 		b->migratory = false;
 		break;
@@ -201,12 +231,14 @@ void InBird(bird* &b,ifstream &ifst){
 	}
 }
 
-void OutBird(bird* &b, ofstream &ofst) {
+void OutBird(bird* &b, ofstream &ofst)
+{
 	CheckOutputFile(ofst);
 	ofst << "It is bird. It is ";
 	ofst << b->name << "." << endl;
 	ofst << "It is " << b->age << " years old." << endl << "It is ";
-	switch (b->migratory) {
+	switch (b->migratory)
+	{
 	case false:
 		ofst << "not ";
 		break;
@@ -216,7 +248,8 @@ void OutBird(bird* &b, ofstream &ofst) {
 	ofst << "migratory." << endl;
 }
 
-void InBeast(beast* &b, ifstream &ifst){
+void InBeast(beast* &b, ifstream &ifst)
+{
 	CheckInputFile(ifst);
 	ifst.getline(b->name, 256);
 	CheckWrongInput(ifst);
@@ -231,7 +264,8 @@ void InBeast(beast* &b, ifstream &ifst){
 		cerr << "Error: unknown type" << endl;
 		exit(1);
 	}
-	switch (k) {
+	switch (k) 
+	{
 	case 1:
 		b->t = beast::type::PREDATOR;
 		break;
@@ -247,12 +281,14 @@ void InBeast(beast* &b, ifstream &ifst){
 	}
 }
 
-void OutBeast(beast* &b, ofstream &ofst) {
+void OutBeast(beast* &b, ofstream &ofst) 
+{
 	CheckOutputFile(ofst);
 	ofst << "It is beast. It is ";
 	ofst << b->name << "." << endl;
 	ofst << "It is " << b->age << " years old." << endl << "It is ";
-	switch (b->t) {
+	switch (b->t) 
+	{
 	case beast::type::PREDATOR:
 		ofst << "predator." << endl;
 		break;
@@ -268,7 +304,8 @@ void OutBeast(beast* &b, ofstream &ofst) {
 	}
 }
 
-animal* In(ifstream &ifst) {
+animal* In(ifstream &ifst) 
+{
 	CheckInputFile(ifst);
 	animal *a;
 	fish *f;
@@ -285,7 +322,8 @@ animal* In(ifstream &ifst) {
 	char t[256];
 	ifst.getline(t, 256);
 	CheckWrongInput(ifst);
-	switch (k1) {
+	switch (k1) 
+	{
 	case 1:
 		f = new fish;
 		f->k = FISH;
@@ -306,12 +344,14 @@ animal* In(ifstream &ifst) {
 	}
 }
 
-void Out(animal *a, ofstream &ofst) {
+void Out(animal *a, ofstream &ofst)
+{
 	CheckOutputFile(ofst);
 	fish *f;
 	bird *b;
 	beast *be;
-	switch (a->k) {
+	switch (a->k)
+	{
 	case FISH:
 		f = (fish*)a;
 		OutFish(f, ofst);
@@ -326,27 +366,31 @@ void Out(animal *a, ofstream &ofst) {
 		break;
 	default:
 		ofst << "Incorrect animal!" << endl;
-		break;
 	}
 }
 
-int LengthOfNameFish(fish *f) {
+int LengthOfNameFish(fish *f)
+{
 	return strlen(f->name);
 }
 
-int LengthOfNameBird(bird *b) {
+int LengthOfNameBird(bird *b) 
+{
 	return strlen(b->name);
 }
 
-int LengthOfNameBeast(beast *b) {
+int LengthOfNameBeast(beast *b) 
+{
 	return strlen(b->name);
 }
 
-int LengthOfName(animal *a) {
+int LengthOfName(animal *a) 
+{
 	fish *f;
 	bird *b;
 	beast *be;
-	switch (a->k) {
+	switch (a->k)
+	{
 	case FISH:
 		f = (fish*)a;
 		return LengthOfNameFish(f);
@@ -362,6 +406,7 @@ int LengthOfName(animal *a) {
 	}
 }
 
-bool Compare(animal *first, animal *second) {
+bool Compare(animal *first, animal *second)
+{
 	return LengthOfName(first) < LengthOfName(second);
 }
