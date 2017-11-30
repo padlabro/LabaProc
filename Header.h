@@ -18,7 +18,7 @@ struct fish
 
 void InFish(fish* &f, ifstream &ifst);
 
-void OutFish(fish* &f, ofstream &ofst);
+void OutFish(fish* &f, ostream &ofst);
 
 int LengthOfNameFish(fish *f);
 
@@ -32,7 +32,7 @@ struct bird
 
 void InBird(bird* &b, ifstream &ifst);
 
-void OutBird(bird* &b, ofstream &ofst);
+void OutBird(bird* &b, ostream &ofst);
 
 int LengthOfNameBird(bird *b);
 
@@ -47,7 +47,7 @@ struct beast
 
 void InBeast(beast* &b, ifstream &ifst);
 
-void OutBeast(beast* &b, ofstream &ofst);
+void OutBeast(beast* &b, ostream &ofst);
 
 int LengthOfNameBeast(beast *b);
 
@@ -59,7 +59,7 @@ struct animal
 };
 
 animal* In(ifstream &ifst);
-void Out(animal *a, ofstream &ofst);
+void Out(animal *a, ostream &ofst);
 int LengthOfName(animal *a);
 
 // Простейший контейнер на основе одномерного массива
@@ -73,10 +73,10 @@ struct container
 void Init(container &c);
 void Clear(container &c);
 void In(container &c, ifstream &ifst);
-void Out(container &c, ofstream &ofst);
+void Out(container &c, ostream &ofst);
 bool Compare(animal *first, animal *second);
-void Sort(container &c);
-void OutFish(container &c, ofstream &ofst);
-void OutBird(container &c, ofstream &ofst);
-void OutBeast(container &c, ofstream &ofst);
-void Multimethod(container &c, ofstream &ofst);
+void Sort(container &c, int d);
+void OutFish(container &c, ostream &ofst);
+void OutBird(container &c, ostream &ofst);
+void OutBeast(container &c, ostream &ofst);
+void Multimethod(container &c, ostream &ofst);
