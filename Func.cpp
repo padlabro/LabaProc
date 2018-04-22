@@ -33,7 +33,51 @@ void In(container &c, ifstream &ifst)
 	}
 }
 
-void Out(container &c, ofstream &ofst) 
+void OutCont(container &c, ostream &ofst)
+{
+	int k = 0;
+	int k1 = 0;
+	while(k1 != 1){
+		cout << "Input number:" << endl;
+		cout << "1 - Out all elements" << endl;
+		cout << "2 - Out only fish" << endl;
+		cout << "3 - Out only bird" << endl;
+		cout << "4 - Out only beast" << endl;
+		cout << "0 - exit" << endl;
+		cin >> k;
+		if (cout.fail())
+		{
+			cout << "Wrong input!" << endl;
+			exit(1);
+		}
+		if (k < 0 || k > 4) {
+			cout << "Incorrect choice! Try again!" << endl;
+			continue;
+		}
+		else {
+			k1 = 1;
+			switch (k)
+			{
+			case 1:
+				Out(c, ofst);
+				break;
+			case 2:
+				OutFish(c, ofst);
+				break;
+			case 3:
+				OutBird(c, ofst);
+				break;
+			case 4:
+				OutBeast(c, ofst);
+				break;
+			default:
+				break;
+			}
+		}
+	}
+}
+
+void Out(container &c, ostream &ofst) 
 {
 	CheckOutputFile(ofst);
 	if (c.len) 
@@ -51,17 +95,33 @@ void Out(container &c, ofstream &ofst)
 
 //-----------------------------------------------------
 // Сортировка содержимого контейнера
-void Sort(container &c) 
+void Sort(container &c, int d) 
 {
 	for (int i = 0; i < c.len - 1; i++) 
 	{
 		for (int j = i + 1; j < c.len; j++) 
 		{
-			if (Compare(c.cont[i], c.cont[j])) 
+			switch (d)
 			{
-				animal *tmp = c.cont[i];
-				c.cont[i] = c.cont[j];
-				c.cont[j] = tmp;
+			case 0:
+				if (Compare(c.cont[i], c.cont[j]))
+				{
+					animal *tmp = c.cont[i];
+					c.cont[i] = c.cont[j];
+					c.cont[j] = tmp;
+				}
+				break;
+			case 1:
+				if (!Compare(c.cont[i], c.cont[j]))
+				{
+					animal *tmp = c.cont[i];
+					c.cont[i] = c.cont[j];
+					c.cont[j] = tmp;
+				}
+				break;
+			default:
+				cerr << "Inknown d in sort function!" << endl;
+				exit(1);
 			}
 		}
 	}
@@ -69,7 +129,7 @@ void Sort(container &c)
 
 //-----------------------------------------------------
 // Вывод только рыб
-void OutFish(container &c, ofstream &ofst) 
+void OutFish(container &c, ostream &ofst) 
 {
 	CheckOutputFile(ofst);
 	if (c.len) 
@@ -95,7 +155,7 @@ void OutFish(container &c, ofstream &ofst)
 
 //-----------------------------------------------------
 // Вывод только птиц
-void OutBird(container &c, ofstream &ofst) 
+void OutBird(container &c, ostream &ofst) 
 {
 	CheckOutputFile(ofst);
 	if (c.len) 
@@ -121,7 +181,7 @@ void OutBird(container &c, ofstream &ofst)
 
 //-----------------------------------------------------
 // Вывод только зверей
-void OutBeast(container &c, ofstream &ofst) 
+void OutBeast(container &c, ostream &ofst) 
 {
 	CheckOutputFile(ofst);
 	if (c.len) 
@@ -178,7 +238,7 @@ void InFish(fish* &f, ifstream &ifst)
 	}
 }
 
-void OutFish(fish* &f, ofstream &ofst) 
+void OutFish(fish* &f, ostream &ofst) 
 {
 	CheckOutputFile(ofst);
 	ofst << "It is fish. It is ";
@@ -231,7 +291,7 @@ void InBird(bird* &b,ifstream &ifst)
 	}
 }
 
-void OutBird(bird* &b, ofstream &ofst)
+void OutBird(bird* &b, ostream &ofst)
 {
 	CheckOutputFile(ofst);
 	ofst << "It is bird. It is ";
@@ -281,7 +341,7 @@ void InBeast(beast* &b, ifstream &ifst)
 	}
 }
 
-void OutBeast(beast* &b, ofstream &ofst) 
+void OutBeast(beast* &b, ostream &ofst) 
 {
 	CheckOutputFile(ofst);
 	ofst << "It is beast. It is ";
@@ -344,7 +404,7 @@ animal* In(ifstream &ifst)
 	}
 }
 
-void Out(animal *a, ofstream &ofst)
+void Out(animal *a, ostream &ofst)
 {
 	CheckOutputFile(ofst);
 	fish *f;
@@ -411,7 +471,7 @@ bool Compare(animal *first, animal *second)
 	return LengthOfName(first) < LengthOfName(second);
 }
 
-void Multimethod(container &c, ofstream &ofst)
+void Multimethod(container &c, ostream &ofst)
 {
 	CheckOutputFile(ofst);
 	if (c.len)
@@ -515,5 +575,4 @@ void Multimethod(container &c, ofstream &ofst)
 			ofst << endl;
 		}
 	}
-	ofst.close();
 }

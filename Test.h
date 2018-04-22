@@ -490,7 +490,7 @@ TEST_F(ContainerTest, CheckSort)
 	c.cont[c.len] = (animal *)be;
 	++c.len;
 
-	Sort(c);
+	Sort(c,0);
 	Out(c, ofst);
 	ofst.close();
 
@@ -507,7 +507,7 @@ TEST_F(ContainerTest, CheckSortEmpty)
 	container c;
 	c.len = 0;
 
-	Sort(c);
+	Sort(c,0);
 	Out(c, ofst);
 	ofst.close();
 
@@ -540,7 +540,7 @@ TEST_F(ContainerTest, CheckSortEqual)
 	c.cont[c.len] = (animal *)be;
 	++c.len;
 
-	Sort(c);
+	Sort(c,0);
 	Out(c, ofst);
 	ofst.close();
 
